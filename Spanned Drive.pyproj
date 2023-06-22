@@ -25,7 +25,11 @@
     <Compile Include="Spanned_Drive.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".gitattributes" />
+    <Content Include=".gitignore" />
     <Content Include="credentials.json" />
+    <Content Include="LICENSE.txt" />
+    <Content Include="README.md" />
     <Content Include="token.json" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
