@@ -22,7 +22,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="gdrive.py" />
+    <Compile Include="googledrive.py" />
     <Compile Include="Spanned_Drive.py" />
   </ItemGroup>
   <ItemGroup>
@@ -32,6 +32,8 @@
     <Content Include="LICENSE.txt" />
     <Content Include="README.md" />
     <Content Include="token.json" />
+    <Content Include="tokens\0.json" />
+    <Content Include="tokens\tokens.json" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">
@@ -43,6 +45,10 @@
       <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
       <Architecture>X64</Architecture>
     </Interpreter>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="appDataFolder\" />
+    <Folder Include="tokens\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
