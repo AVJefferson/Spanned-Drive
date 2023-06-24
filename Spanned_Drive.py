@@ -88,7 +88,7 @@ def main():
     #
     services = []
     try:
-        for cred in creds:
+        for cred in valid:
             service = build("drive", "v3", credentials=cred)
             services.append(service)
             results = (

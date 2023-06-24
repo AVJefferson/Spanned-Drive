@@ -361,6 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-/token.json
+
+# Credentials, Tokens and other sensitive information
 /credentials.json
 /tokens
