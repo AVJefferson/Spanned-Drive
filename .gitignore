@@ -364,4 +364,4 @@ FodyWeavers.xsd
 
 # Credentials, Tokens and other sensitive information
 /credentials.json
-/tokens
+/drives

@@ -29,11 +29,10 @@
     <Content Include=".gitattributes" />
     <Content Include=".gitignore" />
     <Content Include="credentials.json" />
+    <Content Include="drives\collection.json" />
     <Content Include="LICENSE.txt" />
     <Content Include="README.md" />
     <Content Include="token.json" />
-    <Content Include="tokens\0.json" />
-    <Content Include="tokens\tokens.json" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">
@@ -48,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="appDataFolder\" />
-    <Folder Include="tokens\" />
+    <Folder Include="drives\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

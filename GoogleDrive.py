@@ -11,10 +11,10 @@ from googleapiclient.http import MediaIoBaseDownload
 import os
 
 GOOGLE_OAUTH_SCOPES = [
-    "https://www.googleapis.com/auth/userinfo.profile",
-    "https://www.googleapis.com/auth/userinfo.email",
-    "https://www.googleapis.com/auth/drive.appdata",
     "https://www.googleapis.com/auth/drive.file",
+    "https://www.googleapis.com/auth/userinfo.profile",
+    "https://www.googleapis.com/auth/drive.appdata",
+    #"https://www.googleapis.com/auth/userinfo.email", # ERROR: Scope has changed
 ]
 
 NEXT_GOOGLE_ACCOUNT_ID = 0
@@ -92,10 +92,13 @@ class GoogleDrive:
 
         return self.token_status
 
-    def init_from_token_file(self, path):
-        self.token_path = path
+    def init_from_token_file(self, path="", update_path=False):
+        if path == "":
+            path = self.token_path
+        elif update_path:
+            self.token_path = path
         self.token = Credentials.from_authorized_user_file(path, self.scope)
-        return self.update_status()
+        return self
 
     def signup(self):
         try:
@@ -103,9 +106,12 @@ class GoogleDrive:
                 "credentials.json", self.scope
             )
             self.token = flow.run_local_server(port=0)
+
             GoogleDrive.number_of_accounts = GoogleDrive.number_of_accounts + 1
-        except:
+
+        except Exception as e:
             self.token = None  # Invalid token
+            print("\nError:", e)
         return self.update_status()
 
     def save_token(self, path=""):
@@ -115,8 +121,8 @@ class GoogleDrive:
             raise "Path cannot be empty"
 
         if self.token is not None:
-            with open(path, 'w') as token:
-                token.write(self.token.to_json())
+            with open(path, "w") as f:
+                f.write(self.token.to_json())
 
     def service(self):
         self.service = build("drive", "v3", credentials=self.token)
